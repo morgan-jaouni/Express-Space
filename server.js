@@ -32,18 +32,20 @@ app.set('view engine', 'ejs');
 
 
 // INDEX Route
-// send data to 'missions/index.ejs' view
-// the view should display just the names of each mission
-// display the mission names as <li> in a <ul> with the class name "missions"
-
 app.get('/', (req,res) => {
-
+    // send data to 'missions/index.ejs' view
       res.render('missions/index.ejs');
-
 });
 
 
 // SHOW Route
+app.get('/', (req,res) => {
+  // send data to 'missions/index.ejs' view
+    res.render('missions/show.ejs');
+});
+
+
+
 // send data to 'missions/show.ejs' view
 // the view should display all the data for a single mission
 
