@@ -1,7 +1,7 @@
 // DEPENDENCIES
 const express = require('express');
 const app = express();
-
+const missions = require('./models/Mission')
 // run `npm install` to install dependencies in package.json
 
 // * Your mission is to complete the app
@@ -34,21 +34,26 @@ app.set('view engine', 'ejs');
 // INDEX Route
 app.get('/', (req,res) => {
     // send data to 'missions/index.ejs' view
-      res.render('missions/index.ejs');
-});
-
-
-// SHOW Route
-app.get('/', (req,res) => {
-  // send data to 'missions/index.ejs' view
-    res.render('missions/show.ejs');
+    res.render('missions/index', {missions: missions});
+       
 });
 
 
 
-// send data to 'missions/show.ejs' view
-// the view should display all the data for a single mission
 
+//show route
+app.get('/missions/:id', (req, res) => {
+  
+  const missionsId = req.params.id;
+  const mission = missions[missionsId];
+  
+  // the view should display all the data for a single mission
+   res.render('missions/show', {
+
+     mission: mission
+    
+    });
+});
 
 
 // LISTENER
